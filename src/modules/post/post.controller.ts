@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { postService } from "./post.service";
+import { error } from "node:console";
 
 const createPost = async (req: Request, res: Response) => {
   try {
@@ -18,7 +19,19 @@ const createPost = async (req: Request, res: Response) => {
     });
   }
 };
+const getAllPost = async (req: Request, res: Response) => {
+  try {
+    const result = await postService.getAllPost();
+    res.status(200).json(result);
+  } catch (e) {
+    res.status(400).json({
+      error: "Post fetch failed",
+      details: e,
+    });
+  }
+};
 
 export const PostController = {
   createPost,
+  getAllPost
 };
