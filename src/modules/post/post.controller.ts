@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { postService } from "./post.service";
-import { error } from "node:console";
 
 const createPost = async (req: Request, res: Response) => {
   try {
@@ -33,5 +32,5 @@ const getAllPost = async (req: Request, res: Response) => {
 
 export const PostController = {
   createPost,
-  getAllPost
+  getAllPost,
 };
