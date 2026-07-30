@@ -25,7 +25,11 @@ const getAllPost = async (req: Request, res: Response) => {
     const tags = req.query.tags ? (req.query.tags as string).split(",") : [];
     const isFeatured = req.query.isFeatured
       ? req.query.isFeatured === "true"
-      : "false";
+        ? true
+        : req.query.isFeatured === "false"
+          ? false
+          : undefined
+      : undefined;
     const result = await postService.getAllPost({
       search: searchString,
       tags,

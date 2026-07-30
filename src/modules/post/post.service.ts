@@ -18,11 +18,11 @@ const createPost = async (
 const getAllPost = async ({
   search,
   tags,
-  isFeatured
+  isFeatured,
 }: {
   search: string | undefined;
   tags: string[] | [];
-  isFeatured: string | boolean;
+  isFeatured: string | boolean | undefined;
 }) => {
   const andConditions: PostWhereInput[] = [];
   if (search) {
