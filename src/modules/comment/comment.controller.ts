@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { CommentService } from "./comment.service"
 
 const createComment = async (req: Request, res: Response) => {
     try {
