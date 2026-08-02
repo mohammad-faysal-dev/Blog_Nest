@@ -169,6 +169,19 @@ const getPostById = async (postId: string) => {
 };
 
 const getMyPosts = async (authorId: string) => {
+  const userInfo = await prisma.user.findUniqueOrThrow({
+    where: {
+      id: authorId,
+    },
+    select: {
+      id: true,
+      status: true,
+    },
+  });
+
+  if (userInfo.status !== "ACTIVE") {
+    throw new Error("User is not active");
+  }
   const result = await prisma.post.findMany({
     where: {
       authorId,
