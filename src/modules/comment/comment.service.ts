@@ -1,5 +1,6 @@
 import { error } from "node:console"
 import { prisma } from "../../lib/prisma"
+import { CommentStatus } from "../../../generated/prisma/enums"
 
 const createComment = async (payload: {
     title: string,
@@ -75,9 +76,27 @@ const deleteComment = async (commentId: string, authorId: string) => {
     })
 }
 
+const updateComment = async (commentId: string, data: { title?: string, status?: CommentStatus }, authorId: string) => {
+    const commentData = await prisma.comment.findFirst({
+        where: {
+            id: commentId,
+            authorId
+        }
+    })
+    if (!commentData) {
+        throw new Error("your provided input is invalid")
+    }
+    return await prisma.comment.update({
+        where: {
+            id: commentId,
+            authorId
+        }, data
+    })
+}
 export const CommentService = {
     createComment,
     getCommentById,
     getCommentByAuthor,
-    deleteComment
+    deleteComment,
+    updateComment
 }
