@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import { CommentService } from "./comment.service"
+import { error } from "node:console"
 
 const createComment = async (req: Request, res: Response) => {
     try {
@@ -28,7 +29,23 @@ const getCommentById = async (req: Request, res: Response) => {
         })
     }
 }
+
+const getCommentByAuthor = async (req: Request, res: Response) => {
+    try {
+        const { authorId } = req.params
+        const result = await CommentService.getCommentByAuthor(authorId as string)
+        res.status(200).json(result)
+    }
+    catch (e) {
+        res.status(400).json({
+            error: "Failed to fetch comments by author",
+            details: e
+        })
+    }
+}
+
 export const CommentController = {
     createComment,
-    getCommentById
+    getCommentById,
+    getCommentByAuthor
 }
