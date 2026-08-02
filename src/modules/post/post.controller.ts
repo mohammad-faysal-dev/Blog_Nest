@@ -74,7 +74,10 @@ const getPostById = async (req: Request, res: Response) => {
 const getMyPosts = async (req: Request, res: Response) => {
   try {
     const user = req.user;
-    const result = await PostService.getMyPosts(user?.id as string);
+    if (!user) {
+      throw new Error("Unauthorized access. User information is missing.");
+    }
+    const result = await postService.getMyPosts(user?.id as string);
     res.status(200).json(result);
   } catch (e) {
     res.status(400).json({
