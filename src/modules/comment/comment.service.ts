@@ -1,3 +1,4 @@
+import { error } from "node:console"
 import { prisma } from "../../lib/prisma"
 
 const createComment = async (payload: {
@@ -57,9 +58,26 @@ const getCommentByAuthor = async (authorId: string) => {
     })
     return result
 }
+const deleteComment = async (commentId: string, authorId: string) => {
+    const commentData = await prisma.comment.findFirst({
+        where: {
+            id: commentId,
+            authorId
+        }
+    })
+    if (!commentData) {
+        throw new Error("your provided input is invalid")
+    }
+    return await prisma.comment.delete({
+        where: {
+            id: commentData.id
+        }
+    })
+}
 
 export const CommentService = {
     createComment,
     getCommentById,
-    getCommentByAuthor
+    getCommentByAuthor,
+    deleteComment
 }
