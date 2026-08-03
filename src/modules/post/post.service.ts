@@ -210,9 +210,42 @@ const getMyPosts = async (authorId: string) => {
     total,
   };
 };
+
+const updatePost = async (
+  postId: string,
+  data: Partial<Post>,
+  userId: string,
+  isAdmin: boolean,
+) => {
+  const postData = await prisma.post.findUniqueOrThrow({
+    where: {
+      id: postId,
+    },
+    select: {
+      id: true,
+      authorId: true,
+    },
+  });
+  if (!isAdmin && postData.authorId !== userId) {
+    throw new Error(
+      "unauthorized access. You are not the author of this post.",
+    );
+  }
+  if (!isAdmin) {
+    delete data.isFeatured;
+  }
+  const result = await prisma.post.update({
+    where: {
+      id: postData.id,
+    },
+    data,
+  });
+  return result;
+};
 export const postService = {
   createPost,
   getAllPost,
   getPostById,
   getMyPosts,
+  updatePost,
 };

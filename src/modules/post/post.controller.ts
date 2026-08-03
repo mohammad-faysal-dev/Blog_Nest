@@ -3,6 +3,7 @@ import { postService } from "./post.service";
 import { PostStatus } from "../../../generated/prisma/enums";
 import paginationSortingHelper from "../../helpers/paginationSortingHelper";
 import { error } from "node:console";
+import { UserRole } from "../../middlewares/auth";
 
 const createPost = async (req: Request, res: Response) => {
   try {
@@ -90,13 +91,16 @@ const updatePost = async (req: Request, res: Response) => {
   try {
     const { postId } = req.params;
     const user = req.user;
+    const isAdmin = user?.role === UserRole.ADMIN;
     if (!user) {
       throw new Error("Unauthorized access. User information is missing.");
     }
-    const result = await PostService.updatePost(
+    
+    const result = await postService.updatePost(
       postId as string,
       req.body,
       user?.id as string,
+      isAdmin,
     );
     res.status(200).json(result);
   } catch (e) {
