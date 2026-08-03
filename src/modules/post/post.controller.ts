@@ -95,7 +95,7 @@ const updatePost = async (req: Request, res: Response) => {
     if (!user) {
       throw new Error("Unauthorized access. User information is missing.");
     }
-    
+
     const result = await postService.updatePost(
       postId as string,
       req.body,
@@ -110,10 +110,33 @@ const updatePost = async (req: Request, res: Response) => {
     });
   }
 };
+
+const deletePost = async (req: Request, res: Response) => {
+  try {
+    const { postId } = req.params;
+    const user = req.user;
+    const isAdmin = user?.role === UserRole.ADMIN;
+    if (!user) {
+      throw new Error("Unauthorized access. User information is missing.");
+    }
+    const result = await postService.deletePost(
+      postId as string,
+      user?.id as string,
+      isAdmin,
+    );
+    res.status(200).json(result);
+  } catch (e) {
+    res.status(400).json({
+      message: "Failed to delete post",
+      details: e,
+    });
+  }
+};
 export const PostController = {
   createPost,
   getAllPost,
   getPostById,
   getMyPosts,
   updatePost,
+  deletePost
 };
