@@ -11,5 +11,10 @@ router.get(
 );
 router.get("/:postId", PostController.getPostById);
 router.post("/", auth(UserRole.USER), PostController.createPost);
+router.patch(
+  "/:postId",
+  auth(UserRole.USER, UserRole.ADMIN),
+  PostController.updatePost,
+);
 
 export const postRouter = router;

@@ -86,10 +86,30 @@ const getMyPosts = async (req: Request, res: Response) => {
     });
   }
 };
-
+const updatePost = async (req: Request, res: Response) => {
+  try {
+    const { postId } = req.params;
+    const user = req.user;
+    if (!user) {
+      throw new Error("Unauthorized access. User information is missing.");
+    }
+    const result = await PostService.updatePost(
+      postId as string,
+      req.body,
+      user?.id as string,
+    );
+    res.status(200).json(result);
+  } catch (e) {
+    res.status(400).json({
+      message: "Failed to update post",
+      details: e,
+    });
+  }
+};
 export const PostController = {
   createPost,
   getAllPost,
   getPostById,
   getMyPosts,
+  updatePost,
 };
