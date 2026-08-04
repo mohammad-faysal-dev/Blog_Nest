@@ -4,7 +4,7 @@
 
 <br/>
 
-![BlogNest Banner](https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3)
+![BlogNest Banner](./assets/blognest_banner.png)
 
 <br/>
 
