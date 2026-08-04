@@ -4,7 +4,7 @@
 
 <br/>
 
-<a href="#"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=300&q=100" alt="BlogNest Banner" width="100%" /></a>
+<img src="./assets/blognest_banner.png" alt="BlogNest Project Banner" width="100%" height="300" style="object-fit: cover; object-position: center; border-radius: 8px;" />
 
 <br/>
 
