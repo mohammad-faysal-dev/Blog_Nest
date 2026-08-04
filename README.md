@@ -4,7 +4,7 @@
 
 <br/>
 
-<img src="./assets/blognest_banner.png" alt="BlogNest Banner" width="100%" height="300" style="object-fit: cover; border-radius: 8px;" />
+![BlogNest Banner](https://images.unsplash.com/photo-1627398247234-a099dd40e447?q=100&w=1200&h=300&auto=format&fit=crop)
 
 <br/>
 
