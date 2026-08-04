@@ -4,7 +4,7 @@
 
 <br/>
 
-![BlogNest Banner](./assets/blognest_banner.png)
+<img src="./assets/blognest_banner.png" alt="BlogNest Banner" width="100%" height="300" style="object-fit: cover; border-radius: 8px;" />
 
 <br/>
 
