@@ -10,7 +10,7 @@ type IOptionsReturn = {
     page: number;
     limit: number;
     skip: number;
-    sortBy: string;
+    sortBy: string;n
     sortOrder: string;
 }
 

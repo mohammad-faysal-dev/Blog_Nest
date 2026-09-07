@@ -10,7 +10,7 @@ import { notFound } from "./middlewares/notFound";
 const app: Application = express();
 
 app.use(cors({
-  origin: process.env.APP_URL || 'http://localhost:4000',
+  origin: process.env.APP_URL || 'http://localhost:5000',
   credentials: true
 }))
 app.use(express.json());
