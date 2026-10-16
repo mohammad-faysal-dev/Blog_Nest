@@ -1,6 +1,6 @@
 import { auth as betterAuth } from "../lib/auth";
-import { email, success } from "better-auth";
-import express, { NextFunction, Request, Response } from "express";
+
+import { NextFunction, Request, Response } from "express";
 
 export enum UserRole {
   USER = "USER",
