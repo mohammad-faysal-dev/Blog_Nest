@@ -92,6 +92,8 @@ PORT=3000
 # Add other vital configurations (Better Auth, SMTP credentials, etc.)
 ```
 
+For Vercel, set `APP_URL` to the frontend origin (for example, `https://blog-nest-client.vercel.app`). In Google Cloud OAuth settings, add `https://blog-nest-client.vercel.app/api/auth/callback/google` as an authorized redirect URI. The auth callback must use the frontend domain so the OAuth state cookie is sent back through the frontend auth proxy.
+
 ### 3️⃣ Database Migration & Prisma Setup
 
 After configuring your PostgreSQL connection string, integrate your database schema:
