@@ -1,0 +1,22 @@
+model Comment {
+  id        String        @id @default(uuid())
+  title     String
+  authorId  String
+  postId    String
+  parentId  String?
+  status    CommentStatus @default(APPROVED)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  parent    Comment?      @relation("commentReplies", fields: [parentId], references: [id])
+  replies   Comment[]     @relation("commentReplies")
+  post      Post          @relation(fields: [postId], references: [id])
+
+  @@index([authorId])
+  @@index([postId])
+  @@map("comments")
+}
+
+enum CommentStatus {
+  APPROVED
+  REJECT
+}
