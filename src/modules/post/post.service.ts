@@ -1,8 +1,5 @@
-import {
-  CommentStatus,
-  Post,
-  PostStatus,
-} from "../../../generated/prisma/client";
+import { CommentStatus, PostStatus } from "../../../generated/prisma/enums";
+import { Post } from "../../../generated/prisma/client";
 import { PostWhereInput } from "../../../generated/prisma/models";
 import { prisma } from "../../lib/prisma";
 
@@ -277,7 +274,7 @@ const getStats = async () => {
         await tx.comment.count({ where: { status: CommentStatus.APPROVED } }),
         await tx.user.count({ where: { role: "USER" } }),
         await tx.post.aggregate({
-          _sum:{views:true}
+          _sum: { views: true }
         })
       ]);
 
