@@ -7,12 +7,10 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx tsx watch src/server.ts",
-    "seed": "npx tsx src/scripts/seedAdmin.ts",
-    "build": "prisma generate && tsc",
-    "start": "node dist/src/server.js",
-    "postinstall": "cross-env CHECKPOINT_DISABLE=1 prisma generate"
+    "build": "npx esbuild src/server.ts --bundle --platform=node --format=esm --outfile=dist/server.js --external:@prisma/client --external:better-auth --external:nodemailer --external:pg --external:cors --external:express --external:dotenv",
+    "start": "node dist/server.js",
+    "seed": "npx tsx src/scripts/seedAdmin.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
