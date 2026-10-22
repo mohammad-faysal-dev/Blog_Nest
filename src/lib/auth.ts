@@ -19,7 +19,8 @@ export const auth = betterAuth({
     provider: "postgresql", // or "mysql", "postgresql", ...etc
   }),
   trustedOrigins: [
-    process.env.APP_URL || "http://localhost:3000",
+    "https://blog-nest-client.vercel.app",
+    "https://blog-nest-server-six.vercel.app",
     "http://localhost:3000",
   ],
   user: {
@@ -181,6 +182,19 @@ export const auth = betterAuth({
       prompt: "select_account consent",
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    },
+  },
+  advanced: {
+    useSecureCookies: process.env.NODE_ENV === "production",
+    cookies: {
+      state: {
+        attributes: {
+          sameSite: "none",
+          secure: true,
+          httpOnly: true,
+          path: "/",
+        },
+      },
     },
   },
 });

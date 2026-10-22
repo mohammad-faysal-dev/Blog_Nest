@@ -7,13 +7,23 @@ import { commentRouter } from "./modules/comment/comment.route";
 import errorHandler from "./middlewares/globalErrorHandler";
 import { notFound } from "./middlewares/notFound";
 
+const ALLOWED_ORIGINS = [
+  "http://localhost:3000",
+  "https://blog-nest-client.vercel.app",
+  "https://blog-nest-server-six.vercel.app",
+];
+
 const app: Application = express();
 
+// cors first — sets CORS headers for ALL routes (including auth routes called from frontend)
 app.use(cors({
-  origin: (process.env.APP_URL || 'http://localhost:3000').split(',').map(u => u.trim()),
-  credentials: true
-}))
+  origin: ALLOWED_ORIGINS,
+  credentials: true,
+}));
+
 app.use(express.json());
+
+// better-auth after cors so auth routes get CORS headers from above
 app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use("/posts", postRouter);
 app.use("/comments", commentRouter);
