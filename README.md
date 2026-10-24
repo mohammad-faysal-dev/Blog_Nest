@@ -1,145 +1,198 @@
 <div align="center">
 
-# 🪹 BlogNest Platform API
+# 🪹 BlogNest
+
+### The backend engine for modern, secure and scalable blogging platforms.
 
 <br/>
 
-<img src="./assets/blognest_banner.png" alt="BlogNest Project Banner" width="100%" height="300" style="object-fit: cover; object-position: center; border-radius: 8px;" />
+<img src="./assets/blognest_banner.png" alt="BlogNest Banner" width="100%" height="300" style="object-fit: cover; object-position: center; border-radius: 8px;" />
 
 <br/>
-
-**A modern, robust, and scalable backend REST API for your next-generation blogging platform.**
-
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](#)
-[![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](#)
-[![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](#)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](#)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](#)
-
 <br/>
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](https://www.prisma.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+
+[Live Demo](#live-demo) •
+[Why BlogNest](#why-blognest) •
+[Features](#features) •
+[Architecture](#architecture) •
+[Quick Start](#quick-start) •
+[Deployment](#deployment) •
+[Support](#support)
+
 </div>
 
 ---
 
-## 🎯 About The Project
+## Overview
 
-BlogNest is a high-performance backend infrastructure designed for content creation and management. By leveraging **Express.js** and **TypeScript**, it provides type-safe and reliable data flow. Data modeling and interactions are managed gracefully with **Prisma ORM** via a **PostgreSQL** database, while unified security is handled efficiently using **Better Auth**.
+**BlogNest** is a production-ready REST API that powers the content side of a blogging platform. It gives your product a dependable foundation for user accounts, secure sign-in, content management and email communication, so your team can focus on building the experience your readers will love instead of rebuilding infrastructure.
 
----
-
-## 🚀 Key Features
-
-- **🔑 Secure Authentication**: Integrated with Better Auth.
-- **🛡️ Type-Safe Architecture**: Full TypeScript implementation.
-- **🚀 Database Management**: Prisma ORM (v7) and robust PostgreSQL integration.
-- **📧 Mailer Integrated**: Email functionalities configured via Nodemailer.
-- **🚦 Scalable Structure**: Clear separation between modular routes, controllers, and middlewares.
+Built with **TypeScript**, **Express.js**, **Prisma** and **PostgreSQL**, BlogNest is designed to be easy to understand, safe to extend and ready to grow with your audience.
 
 ---
 
-## 📁 Project Structure
+## Live Demo
+
+| Resource | Link |
+| :-- | :-- |
+| Frontend Application | [blog-nest-client.vercel.app](https://blog-nest-client.vercel.app) |
+| API Base URL | `https://your-api-domain.com` *(replace with your deployed API URL)* |
+
+---
+
+## Why BlogNest
+
+| What you get | Why it matters |
+| :-- | :-- |
+| **Secure by design** | Authentication is handled by Better Auth, so user accounts and sessions are protected with a proven approach. |
+| **Fewer bugs in production** | A fully type-safe codebase catches mistakes early, long before they reach your users. |
+| **Reliable data** | PostgreSQL with Prisma ORM keeps your content consistent, structured and easy to query. |
+| **Ready to scale** | A modular structure lets you add new features without touching unrelated parts of the system. |
+| **Easy to maintain** | Clean, well-organized code means new developers can understand and contribute quickly. |
+| **Built-in email support** | Nodemailer is integrated for transactional emails such as verification and notifications. |
+
+---
+
+## Features
+
+- **Secure Authentication** — Account sign-in and session management powered by Better Auth, including Google OAuth support.
+- **Type-Safe Architecture** — End-to-end TypeScript for predictable, maintainable code.
+- **Robust Data Layer** — Prisma ORM (v7) on PostgreSQL for clean schema management and fast, safe queries.
+- **Email Integration** — Configurable SMTP email delivery through Nodemailer.
+- **Centralized Error Handling** — Dedicated middlewares for authentication, error responses and unknown routes.
+- **Admin Seeding** — One command to create the initial admin account for a fast, hassle-free launch.
+- **Cloud Ready** — Configured to work smoothly with Vercel deployments.
+
+---
+
+## Architecture
+
+BlogNest follows a clear, modular layout so every part of the system has a single responsibility.
 
 ```text
 BlogNest/
-├── prisma/             # 🗄️ Database models (schema.prisma) & configurations
+├── prisma/             # Database models (schema.prisma) and configuration
 ├── src/
-│   ├── middlewares/    # 🔒 Auth, Error Handlers, Not Found Handler
-│   ├── scripts/        # 🛠️ Utility scripts (e.g., seeding admin users)
-│   ├── app.ts          # ⚙️ Express Application bootstrap
-│   └── server.ts       # 🚀 Main entry point
-├── .env                # 🤫 Environment combinations
-└── package.json        # 📦 Dependency management
+│   ├── middlewares/    # Auth, error handler and not-found handler
+│   ├── scripts/        # Utility scripts (e.g. admin user seeding)
+│   ├── app.ts          # Express application setup
+│   └── server.ts       # Application entry point
+├── .env                # Environment variables
+└── package.json        # Dependencies and scripts
 ```
+
+**Technology stack**
+
+| Layer | Technology |
+| :-- | :-- |
+| Runtime | Node.js (v20+) |
+| Language | TypeScript |
+| Framework | Express.js |
+| ORM | Prisma (v7) |
+| Database | PostgreSQL |
+| Authentication | Better Auth |
+| Email | Nodemailer |
+| Dev Tooling | tsx (hot reload) |
 
 ---
 
-## 🛠️ Getting Started
+## Quick Start
 
-Follow these clean standard steps to set up the environment and run the project strictly on your local machine.
+Get BlogNest running locally in about five minutes.
 
-### Prerequisites
+**Requirements:** [Node.js](https://nodejs.org/en/) v20 or higher and a running [PostgreSQL](https://www.postgresql.org/) server.
 
-Ensure you have the following installed:
-- **[Node.js](https://nodejs.org/en/)** (v20+ recommended)
-- **[PostgreSQL](https://www.postgresql.org/)** Database Engine
-
-<br/>
-
-### 1️⃣ Clone & Install dependencies
+### 1. Install
 
 ```bash
-# Clone the repository
 git clone https://github.com/your-username/BlogNest.git
-
-# Navigate into the directory
 cd BlogNest
-
-# Install all the necessary packages
 npm install
 ```
 
-### 2️⃣ Environment Variables Workspace
+### 2. Configure
 
-Rename `.env.example` to `.env` or create a new `.env` file at the root, and configure it:
+Rename `.env.example` to `.env` (or create a new `.env` file in the project root) and add your values:
 
 ```env
-# Database configuration
+# Database
 DATABASE_URL="postgres://user:password@localhost:5432/blognest"
 
-# Server configuration
+# Server
 PORT=3000
 
-# Add other vital configurations (Better Auth, SMTP credentials, etc.)
+# Add the remaining configuration here (Better Auth, SMTP credentials, etc.)
 ```
 
-For Vercel, set `APP_URL` to the frontend origin (for example, `https://blog-nest-client.vercel.app`). In Google Cloud OAuth settings, add `https://blog-nest-client.vercel.app/api/auth/callback/google` as an authorized redirect URI. The auth callback must use the frontend domain so the OAuth state cookie is sent back through the frontend auth proxy.
-
-### 3️⃣ Database Migration & Prisma Setup
-
-After configuring your PostgreSQL connection string, integrate your database schema:
+### 3. Prepare the database
 
 ```bash
-# Generate the Prisma types
 npx prisma generate
-
-# Push the schema architecture to PostgreSQL
 npx prisma db push
 ```
 
-### 4️⃣ Seed The Database (Optional)
+### 4. Seed initial data *(optional)*
 
-Inject essential initial data (like an Admin user) into your database directly:
+Creates the default admin account so you can start managing the platform right away.
 
 ```bash
 npm run seed
 ```
 
-### 5️⃣ Launch Time
-
-Start up the development server featuring auto-reload capabilities powered by `tsx`:
+### 5. Run
 
 ```bash
 npm run dev
 ```
 
-> **Hooray! 🎉** Your server should now be running cleanly on `http://localhost:3000`.
+The API is now available at `http://localhost:3000`.
+
+**Available scripts**
+
+| Command | Description |
+| :-- | :-- |
+| `npm run dev` | Starts the development server with hot reload. |
+| `npm run seed` | Seeds the database with the default admin configuration. |
 
 ---
 
-## 📜 Available Scripts
+## Deployment
 
-| Script | Action |
-| ------ | ------ |
-| `npm run dev` | Spins up the development server with Hot Module Reloading. |
-| `npm run seed`| Triggers the DB seeding protocol using default admin configurations. |
+BlogNest is ready for cloud hosting. When deploying with **Vercel**, the authentication callback must pass through the frontend domain so the OAuth state cookie is returned correctly via the frontend auth proxy.
+
+1. Set `APP_URL` to your frontend origin:
+
+   ```env
+   APP_URL="https://blog-nest-client.vercel.app"
+   ```
+
+2. In **Google Cloud Console → OAuth settings**, add this authorized redirect URI:
+
+   ```text
+   https://blog-nest-client.vercel.app/api/auth/callback/google
+   ```
 
 ---
 
-## 🤝 Contribution Guidelines
+## Support
 
-Contributions, issues, and feature requests are highly appreciated! Feel free to check the [issues page](#) if you want to contribute.
+Have a question, found an issue or need a new feature? We would be glad to help.
+
+| Channel | Details |
+| :-- | :-- |
+| Issues | [Open an issue](https://github.com/your-username/BlogNest/issues) |
+| Email | your-email@example.com |
+
+Contributions and suggestions are always welcome. Feel free to open a pull request.
+
+---
 
 <div align="center">
-  <br/>
-  <i>Crafted with ✨ and strong typing.</i>
+  <sub>Built with care and strong typing.</sub>
 </div>
