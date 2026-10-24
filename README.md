@@ -89,16 +89,16 @@ BlogNest/
 
 **Technology stack**
 
-| Layer | Technology |
-| :-- | :-- |
-| Runtime | Node.js (v20+) |
-| Language | TypeScript |
-| Framework | Express.js |
-| ORM | Prisma (v7) |
-| Database | PostgreSQL |
-| Authentication | Better Auth |
-| Email | Nodemailer |
-| Dev Tooling | tsx (hot reload) |
+| Layer | Technology | Purpose |
+| :-- | :-- | :-- |
+| Runtime | Node.js (v20+) | Fast, reliable JavaScript runtime for the server |
+| Language | TypeScript | Type-safe code that is easier to maintain and extend |
+| Framework | Express.js | Routing, middleware and HTTP request handling |
+| ORM | Prisma (v7) | Schema management and safe, typed database access |
+| Database | PostgreSQL | Dependable relational storage for all platform data |
+| Authentication | Better Auth | Secure sign-in, sessions and Google OAuth |
+| Email | Nodemailer | Transactional email delivery over SMTP |
+| Dev Tooling | tsx | Instant startup with hot reload during development |
 
 ---
 
